@@ -117,8 +117,10 @@ header{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            // visibility: hidden;
-            display: none;
+            visibility: hidden;
+            opacity: 0;
+            // display: none;
+            transition: all .5s;
 
             .buttons{
                 position: relative;
@@ -190,6 +192,9 @@ header{
             text-align: center;
             position: absolute;
             // display: none;
+            visibility: visible;
+            opacity: 1;
+            transition: all 2s;
 
             a{
                 position: absolute;
