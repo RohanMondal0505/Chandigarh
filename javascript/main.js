@@ -471,8 +471,8 @@ function carClick(icon){
 
 // Blog Start ------------------
 
+// Blog Btn 
 const blogBtn = document.querySelectorAll(".blogHeading .blogH-1 span");
-
 const aniBar = document.querySelector(".blogHeading .blogH-1 .aniBar");
 
 blogBtn[0].addEventListener("click", ()=>{
@@ -492,8 +492,7 @@ function clickToOpenBlogTab(index){
         e.style.visibility = "";
     })
     blogContainer[index].style.visibility = "visible";
-    
-    
+
     if(index == 1){
             blogContainer[0].style.left = "100%";
             blogContainer[1].style.left = "0%";
@@ -503,7 +502,5 @@ function clickToOpenBlogTab(index){
     }
 }
 clickToOpenBlogTab(0);
-
-
 
 // x Blog End x ------------------ x

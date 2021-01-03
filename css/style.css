@@ -11,7 +11,9 @@ html {
 
 :root {
   --blue:  rgb(0, 140, 255);
+  --blueHover:   rgb(1, 72, 131);
   --gray:  rgb(120, 123, 124);
+  --row1Bg: rgba(15, 41, 77, 0.6);
 }
 
 a {
@@ -40,6 +42,7 @@ header {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  background: rgba(212, 212, 212, 0.3);
 }
 
 header .left-container {
@@ -174,6 +177,7 @@ header .right-container {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  border: 1px solid #000;
 }
 
 header .right-container .login-section {
@@ -687,11 +691,12 @@ header .right-container .logout-section a:hover span {
 
 main {
   width: 100%;
-  height: 150rem;
+  background: rgba(212, 212, 212, 0.3);
 }
 
 main .row-1 {
   position: relative;
+  z-index: 20;
 }
 
 main .row-1 .headline {
@@ -709,7 +714,7 @@ main .row-1 .headline {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background: rgba(15, 41, 77, 0.6);
+  background: var(--row1Bg);
 }
 
 main .row-1 .headline span {
@@ -734,7 +739,7 @@ main .row-1 .box {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
   top: 5.5rem;
-  z-index: 10;
+  z-index: 20;
 }
 
 main .row-1 .box:before {
@@ -781,7 +786,7 @@ main .row-2 .background {
           clip-path: ellipse(58% 40% at 50% 20%);
   background: url(../images/background.webp) center no-repeat;
   background-position-y: -100%;
-  z-index: -1;
+  z-index: 1;
 }
 
 main .row-2 .background::before {
@@ -851,6 +856,7 @@ main .row-2 .bottom .tab .innerTab {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   border: 1px solid rgba(0, 0, 0, 0.26);
 }
 
@@ -917,7 +923,7 @@ main .row-2 .bottom .tab .innerTab .details.hotel-2 .date3 {
 }
 
 main .row-2 .bottom .tab .innerTab .details.hotel-2 .date3:nth-child(2) {
-  width: 8rem;
+  width: 6rem;
   color: var(--gray);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1289,7 +1295,8 @@ main .row-2 .bottom .tab .innerTab .details.car-3 .f32 p:nth-child(2) i:hover {
 }
 
 main .row-2 .bottom .tab .innerTab .details:last-child {
-  width: 25%;
+  width: 100px;
+  padding: 0 5rem;
   border-right: none;
   position: relative;
   cursor: pointer;
@@ -1309,7 +1316,7 @@ main .row-2 .bottom .tab .innerTab .details:last-child i {
 }
 
 main .row-2 .bottom .tab .innerTab .details:last-child:hover {
-  background: #005ba5;
+  background: var(--blueHover);
 }
 
 main .row-3 {
@@ -1340,7 +1347,7 @@ main .row-3 .blogHeading .blogH-1 {
 main .row-3 .blogHeading .blogH-1 .aniBar {
   width: 30%;
   height: 3px;
-  background: #008cff;
+  background: var(--blue);
   position: absolute;
   bottom: 0;
   left: 4.5%;
@@ -1357,7 +1364,7 @@ main .row-3 .blogHeading .blogH-1 span {
 }
 
 main .row-3 .blogHeading .blogH-2 {
-  background: #008cff;
+  background: var(--blue);
   border-radius: .5rem;
   -webkit-transition: all .2s ease-in;
   transition: all .2s ease-in;
@@ -1378,7 +1385,7 @@ main .row-3 .blogHeading .blogH-2 a i {
 }
 
 main .row-3 .blogHeading .blogH-2:hover {
-  background: #014883;
+  background: var(--blueHover);
 }
 
 main .row-3 .blogMainContainer {
@@ -1422,7 +1429,7 @@ main .row-3 .blogMainContainer .blogContainer .innerBlogContainer .blog {
 }
 
 main .row-3 .blogMainContainer .blogContainer .innerBlogContainer .blog:hover {
-  top: -5px;
+  top: -10px;
 }
 
 main .row-3 .blogMainContainer .blogContainer .innerBlogContainer .blog .blogImg {
@@ -1460,7 +1467,7 @@ main .row-3 .blogMainContainer .blogContainer .innerBlogContainer .blog .blogDat
   -ms-grid-row-span: 1;
   grid-row: 1 / 2;
   display: block;
-  padding: .3rem 1rem;
+  padding: .8rem 1rem 0;
   font-size: 2.8rem;
 }
 
@@ -1597,5 +1604,249 @@ main .row-33 .owl-carousel .owl-dots {
   bottom: 0;
   width: 100%;
   /* border: 1px solid #000; */
+}
+
+@media (max-width: 1700px) {
+  main .row-2 .bottom {
+    width: 70%;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    grid-column-gap: 7rem;
+  }
+}
+
+@media (max-width: 1650px) {
+  main .row-2 .bottom {
+    width: 80%;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    width: 95%;
+    grid-column-gap: 5rem;
+  }
+}
+
+@media (max-width: 1550px) {
+  main .row-2 .top ul {
+    width: 60%;
+  }
+  main .row-2 .bottom {
+    width: 85%;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    width: 98%;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+}
+
+@media (max-width: 1370px) {
+  main .row-2 .bottom {
+    width: 95%;
+  }
+  main .row-2 .bottom .tab .details .f32:last-child {
+    padding-right: 2rem;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+}
+
+@media (max-width: 1335px) {
+  html {
+    font-size: 60%;
+  }
+  main .row-2 {
+    padding: 10rem 2rem 0;
+  }
+  main .row-2 .background {
+    -webkit-clip-path: none;
+            clip-path: none;
+    background-position-y: 0%;
+  }
+  main .row-2 .top ul {
+    width: 70%;
+  }
+  main .row-2 .bottom {
+    width: 100%;
+  }
+  main .row-3 .blogMainContainer .blogContainer {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    width: 100%;
+    -ms-grid-columns: (minmax(40rem, 1fr))[2];
+        grid-template-columns: repeat(2, minmax(40rem, 1fr));
+    -ms-grid-rows: (35rem)[3];
+        grid-template-rows: repeat(3, 35rem);
+    grid-column-gap: 5rem;
+    grid-row-gap: 5rem;
+  }
+}
+
+@media (max-width: 1040px) {
+  main .row-2 .bottom .tab {
+    padding: 2rem;
+  }
+  main .row-2 .bottom .tab .innerTab .details.hotel-3 .roomCountMainDiv {
+    width: 100%;
+  }
+  main .row-3 .blogHeading {
+    padding: 0 4rem;
+  }
+}
+
+@media (max-width: 980px) {
+  html {
+    font-size: 58%;
+  }
+  main .row-3 .blogMainContainer .blogContainer {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    grid-column-gap: 3rem;
+    grid-row-gap: 3rem;
+  }
+}
+
+@media (max-width: 889px) {
+  html {
+    font-size: 60%;
+  }
+  header .left-container .search-bar, header .help {
+    display: none;
+  }
+  header .left-container {
+    -ms-flex-preferred-size: 10rem;
+        flex-basis: 10rem;
+  }
+  header .right-container {
+    -ms-flex-preferred-size: 10rem;
+        flex-basis: 10rem;
+  }
+  main .row-2 {
+    padding: 10rem 5rem 0;
+  }
+  main .row-2 .background {
+    -webkit-clip-path: ellipse(58% 40% at 50% 20%);
+            clip-path: ellipse(58% 40% at 50% 20%);
+    background-position-y: 0%;
+  }
+  main .row-2 .top ul {
+    width: 100%;
+  }
+  main .row-2 .bottom {
+    width: 100%;
+    height: 30rem;
+  }
+  main .row-2 .bottom .tab .innerTab {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  main .row-2 .bottom .tab .innerTab .details {
+    width: 100% !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+  }
+  main .row-2 .bottom .tab .innerTab .details:last-child {
+    border-bottom: none;
+  }
+  main .row-2 .bottom .tab .innerTab .details.hotel-2 .date3 {
+    width: 100%;
+  }
+  main .row-2 .bottom .tab .innerTab .details.hotel-2 .date3:nth-child(2) {
+    width: 100%;
+  }
+  main .row-2 .bottom .tab .innerTab .details.hotel-3 {
+    z-index: 10;
+  }
+  main .row-2 .bottom .tab .innerTab .details.hotel-3 .fa-chevron-down {
+    top: 50%;
+    right: .5%;
+  }
+  main .row-2 .bottom .tab .innerTab .details.flight-3, main .row-2 .bottom .tab .innerTab .details.train-3, main .row-2 .bottom .tab .innerTab .details.bus-3, main .row-2 .bottom .tab .innerTab .details.car-3 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  main .row-2 .bottom .tab .innerTab .details.flight-3 .f32, main .row-2 .bottom .tab .innerTab .details.train-3 .f32, main .row-2 .bottom .tab .innerTab .details.bus-3 .f32, main .row-2 .bottom .tab .innerTab .details.car-3 .f32 {
+    width: 100%;
+  }
+  main .row-2 .bottom .tab .innerTab .details.flight-3 .f32:last-child, main .row-2 .bottom .tab .innerTab .details.train-3 .f32:last-child, main .row-2 .bottom .tab .innerTab .details.bus-3 .f32:last-child, main .row-2 .bottom .tab .innerTab .details.car-3 .f32:last-child {
+    padding-right: 0;
+  }
+  main .row-3 .blogMainContainer .blogContainer {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    -ms-grid-rows: (35rem)[6];
+        grid-template-rows: repeat(6, 35rem);
+    grid-row-gap: 5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  html {
+    font-size: 50%;
+  }
+  main .row-2 {
+    padding: 10rem 2rem 0;
+  }
+  main .row-3 .blogMainContainer .blogContainer {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    grid-row-gap: 5rem;
+  }
+}
+
+@media (max-width: 492px) {
+  html {
+    font-size: 48%;
+  }
+  main .row-2 {
+    padding: 10rem 1rem 0;
+  }
+  main .row-2 .background {
+    -webkit-clip-path: ellipse(60% 80% at 50% 20%);
+            clip-path: ellipse(60% 80% at 50% 20%);
+  }
+  main .row-3 .blogMainContainer .blogContainer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    grid-row-gap: 2rem;
+  }
+}
+
+@media (max-width: 460px) {
+  main .row-2 .top ul li i {
+    display: block;
+  }
+  main .row-3 .blogMainContainer .blogContainer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  main .row-3 .blogMainContainer .blogContainer .innerBlogContainer {
+    grid-row-gap: 2rem;
+  }
+}
+
+@media (max-width: 376px) {
+  html {
+    font-size: 47%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

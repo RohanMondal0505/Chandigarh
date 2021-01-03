@@ -1,10 +1,12 @@
 main{
     width: 100%;
-    height: 150rem;
+    // height: 150rem;
     // border: 1px solid #000;
+    background: rgba(212, 212, 212,.3);
     
     .row-1{
         position: relative;
+        z-index: 20;
         
         .headline{
             display: flex;
@@ -12,7 +14,7 @@ main{
             align-items: center;
             font-size: 1.7rem;
             user-select: none;
-            background: rgba(15, 41, 77, 0.6);
+            background: var(--row1Bg);
 
             span{
                 text-align: center;
@@ -38,7 +40,7 @@ main{
             // color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, .7);
             top: 5.5rem;
-            z-index: 10;
+            z-index: 20;
 
             &:before{
                 content: '';
@@ -81,7 +83,7 @@ main{
             clip-path: ellipse(58% 40% at 50% 20%);
             background: url(../images/background.webp) center no-repeat;
             background-position-y: -100%;
-            z-index: -1;
+            z-index: 1;
 
             &::before{
                 content: "";
@@ -144,6 +146,7 @@ main{
                     width: 100%;
                     height: 100%;
                     display: flex;
+                    position: relative;
                     border: 1px solid rgba(0, 0, 0, 0.26);
 
                     .details{
@@ -188,10 +191,10 @@ main{
                                 display: flex;
                                 flex-direction: column;
                                 &:nth-child(2){
-                                    width: 8rem;
+                                    width: 6rem;
                                     color: var(--gray);
                                     justify-content: center;
-                                    align-items: center;    
+                                    align-items: center;  
                                 }
                             }
                         }
@@ -447,7 +450,8 @@ main{
 
                     }
                     .details:last-child{
-                        width: 25%;
+                        width: 100px;
+                        padding: 0 5rem;
                         border-right: none;
                         position: relative;
                         cursor: pointer;
@@ -464,7 +468,7 @@ main{
                         }
 
                         &:hover{
-                            background: rgb(0, 91, 165);
+                            background: var(--blueHover);
                         }
                     }
                 }
@@ -488,7 +492,7 @@ main{
                 .aniBar{
                     width: 30%;
                     height: 3px;
-                    background:rgb(0, 140, 255);
+                    background: var(--blue);
                     position: absolute;
                     bottom: 0;
                     left: 4.5%;
@@ -503,7 +507,7 @@ main{
                 }
             }
             .blogH-2{
-                background: rgb(0, 140, 255);
+                background: var(--blue);
                 border-radius: .5rem;
                 transition: all .2s ease-in;
                 
@@ -522,7 +526,7 @@ main{
                 }
                 
                 &:hover{
-                    background: rgb(1, 72, 131);
+                    background: var(--blueHover);
                 }
             }
         }
@@ -556,8 +560,9 @@ main{
                         color: #000;
                         cursor: pointer;
                         transition: all .1s;
+                        
                         &:hover{
-                            top: -5px;
+                            top: -10px;
                         }
     
                         .blogImg{
@@ -567,7 +572,6 @@ main{
                             img{
                                 width: 100%;
                                 transition: all 1s;
-    
                                 &:hover{
                                     transform: scale(1.1);
                                 }
@@ -585,7 +589,7 @@ main{
                                 grid-column: 1 / 4;
                                 grid-row: 1 / 2;
                                 display: block;
-                                padding: .3rem 1rem;
+                                padding: .8rem 1rem 0;
                                 font-size: 2.8rem;
     
                                 span{
@@ -674,7 +678,7 @@ main{
 
 
 
-    
+
     .row-33{
         // margin-top: .5rem;
         box-shadow: 0 0 10px rgba(0, 0, 0, .5);

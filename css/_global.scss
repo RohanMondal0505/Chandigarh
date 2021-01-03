@@ -10,8 +10,13 @@ html{
 
 :root {
     --blue:  rgb(0, 140, 255);
+    --blueHover:   rgb(1, 72, 131);
     --gray:  rgb(120, 123, 124);
- }
+    --row1Bg: rgba(15, 41, 77, 0.6);
+    // --blue:  rgb(250, 10, 10);
+    // --blueHover:   rgb(173, 6, 6);
+    // --row1Bg: rgba(77, 15, 15, 0.6);
+}
 
 a{
     text-decoration: none;
