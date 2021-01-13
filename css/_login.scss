@@ -192,11 +192,11 @@
                         }
                         span{
                             display: block;
+                            height: 2rem;
                             padding: .3rem 0rem 0 1rem;
                             font-size: 1.5rem;
                             color: red;
                             letter-spacing: .2rem;
-                            opacity: 0;
                         }
                         &:last-child{
                             margin-top: 2.5rem;
@@ -237,6 +237,8 @@
                             left: 1rem;
                             color: rgba(0, 0, 0, 0.603);
                             transition: all .3s;
+                            cursor: text;
+
 
                             &#fileLabel{
                                 padding-left: 20rem;

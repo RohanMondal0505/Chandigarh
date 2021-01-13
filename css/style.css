@@ -177,7 +177,6 @@ header .right-container {
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  border: 1px solid #000;
 }
 
 header .right-container .login-section {
@@ -192,10 +191,8 @@ header .right-container .login-section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  visibility: visible;
+  opacity: 1;
 }
 
 header .right-container .login-section .buttons {
@@ -284,8 +281,6 @@ header .right-container .logout-section {
   position: absolute;
   visibility: visible;
   opacity: 1;
-  -webkit-transition: all 2s;
-  transition: all 2s;
 }
 
 header .right-container .logout-section a {
@@ -297,6 +292,7 @@ header .right-container .logout-section a {
   font-weight: 800;
   -webkit-transition: all .5s;
   transition: all .5s;
+  cursor: pointer;
 }
 
 header .right-container .logout-section a span {
@@ -578,11 +574,11 @@ header .right-container .logout-section a:hover span {
 
 .log-background .log-container .log-body-container .login-container form .form-group span {
   display: block;
+  height: 2rem;
   padding: .3rem 0rem 0 1rem;
   font-size: 1.5rem;
   color: red;
   letter-spacing: .2rem;
-  opacity: 0;
 }
 
 .log-background .log-container .log-body-container .login-container form .form-group:last-child {
@@ -628,6 +624,7 @@ header .right-container .logout-section a:hover span {
   color: rgba(0, 0, 0, 0.603);
   -webkit-transition: all .3s;
   transition: all .3s;
+  cursor: text;
 }
 
 .log-background .log-container .log-body-container .signin-container form .form-group label#fileLabel {
@@ -717,7 +714,8 @@ main .row-1 .headline {
   background: var(--row1Bg);
 }
 
-main .row-1 .headline span {
+main .row-1 .headline a {
+  display: block;
   text-align: center;
   border-bottom: none;
   padding: .5rem 1rem;
@@ -760,14 +758,6 @@ main .row-1 .box.box-1 {
 
 main .row-1 .box.box-2 {
   left: 55.5rem;
-}
-
-main .row-1 .box.box-3 {
-  left: 95.5rem;
-}
-
-main .row-1 .box.box-4 {
-  right: 20.5rem;
 }
 
 main .row-2 {
@@ -1342,6 +1332,7 @@ main .row-3 .blogHeading {
 
 main .row-3 .blogHeading .blogH-1 {
   position: relative;
+  width: 18.6rem;
 }
 
 main .row-3 .blogHeading .blogH-1 .aniBar {

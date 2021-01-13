@@ -111,7 +111,6 @@ header{
         flex-basis: 50%;
         display: flex;
         position: relative;
-        border: 1px solid #000;
 
         .login-section{
             width: 100%;
@@ -119,10 +118,8 @@ header{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            visibility: hidden;
-            opacity: 0;
-            // display: none;
-            transition: all .5s;
+            visibility: visible;
+            opacity: 1;
 
             .buttons{
                 position: relative;
@@ -193,10 +190,8 @@ header{
             height: 100%;
             text-align: center;
             position: absolute;
-            // display: none;
             visibility: visible;
             opacity: 1;
-            transition: all 2s;
 
             a{
                 position: absolute;
@@ -206,6 +201,7 @@ header{
                 padding: .5rem;
                 font-weight: 800;
                 transition: all .5s;
+                cursor: pointer;
                 
                 span{
                     font-size: 2.5rem;
