@@ -119,7 +119,9 @@ if (isset($_SESSION['logPOP'])) { ?>
 <!-- Header Section Start -->
 <header>
     <div class="left-container">
-        <div class="logo">Logo</div>
+        <a href="./index.php" class="logo">
+            <img src="./images/logo.png" alt="Logo">
+        </a>
         <div class="search-bar">
             <form id="search-form" action="" method="get">
                 <input type="search" name="search" id="search" placeholder="Search" autocomplete="off">
@@ -146,16 +148,22 @@ if (isset($_SESSION['logPOP'])) { ?>
         if (isset($_SESSION['use'])) { ?>
             <div class="login-section">
                 <div class="buttons">
-                    <a href="#" target="_blank">Wallet</a>
-                    <a href="#" target="_blank">Blog</a>
+                    <a href="./wallet.php">Wallet</a>
+                    <a href="#" target="_blank">My Orders</a>
                 </div>
+                <?php
+                include "./database/conn.php";
+                $sql2 = "SELECT name, image FROM user_data WHERE id = '{$_SESSION['user_id']}'";
+                $result2 = mysqli_query($conn, $sql2);
+                $row2 = mysqli_fetch_assoc($result2);
+                ?>
                 <div class="profile-section">
                     <div class="info">
                         <span>Welcome</span>
-                        <p>Abc Xyz</p>
+                        <p><?php echo $row2['name']; ?></p>
                     </div>
                     <div class="p-pic">
-                        <img src="./profile images/default.jpg" alt="Profile Image">
+                        <img src="./profile images/<?php echo $row2['image']; ?>" alt="Profile Image">
                     </div>
                 </div>
                 <a href="./database/logout.php" class="logout">Log Out</a>

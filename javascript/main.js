@@ -1,30 +1,3 @@
-
-
-// Logout Button Start ------------------xxxxxxxx
-// const logoutBtn = document.querySelector(".logout");
-// const loginBtn = document.querySelector(".logout-section a");
-// const loginSection = document.querySelector(".login-section");
-// const logoutSection = document.querySelector(".logout-section");
-
-// logoutBtn.addEventListener("click", ()=>{
-//     loginSection.style.visibility="hidden";
-//     logoutSection.style.visibility="visible";
-//     loginSection.style.opacity=0;
-//     logoutSection.style.opacity=1;
-// })
-
-// loginBtn.addEventListener("click", ()=>{
-//     document.querySelector(".log-background").style.opacity=1;
-//     document.querySelector(".log-background").style.visibility="visible";
-//     // loginSection.style.visibility="visible";
-//     // loginSection.style.opacity=1;
-//     // logoutSection.style.visibility="hidden";
-//     // logoutSection.style.opacity=0;
-// })
-// x Logout Button End x ------------------ xxxxxxxxx
-
-
-
 // Div Hover Start ------------------
 const span2 = document.querySelectorAll(".headline a");
 span2.forEach((e)=>{
@@ -44,6 +17,7 @@ span2.forEach((e)=>{
             document.querySelector(".box-2").style.display="none";
         })
     }
+})
 // x Div Hover End x ------------------ x
 
 

@@ -12,7 +12,7 @@ if (isset($_POST['logIn'])){
     $result1 = mysqli_query($conn,$sql1);
 
     if(mysqli_num_rows($result1) > 0){
-        $sql2 = "SELECT email, password FROM user_data WHERE email = '{$email}' AND password = '{$password}'";
+        $sql2 = "SELECT id, email, password FROM user_data WHERE email = '{$email}' AND password = '{$password}'";
         $result2 = mysqli_query($conn,$sql2);
 
         if(mysqli_num_rows($result2) > 0){

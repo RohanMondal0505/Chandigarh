@@ -15,6 +15,8 @@ session_start();
     <link rel="stylesheet" href="./css/owl.carousel.css">
     <link rel="stylesheet" href="./css/owl.theme.default.css">
     <link rel="stylesheet" href="./css/style.css">
+    <!-- Sweet Alert CDN -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -91,16 +93,18 @@ session_start();
                 </div>
                 <div class="bottom">
                     <div class="tab tab-1">
-                        <form class="innerTab" id="hotel-form" action="" method="get">
+                        <form class="innerTab" id="hotel-form" action="hotel.php" method="POST">
                             <div class="details hotel-1">
                                 <label for="hName">Destination/Hotel Name</label>
-                                <select name="hName" id="hName">
-                                    <option value="" selected disabled>Select One</option>
-                                    <option value="option1">Option1</option>
-                                    <option value="option2">Option2</option>
-                                    <option value="option3">Option3</option>
-                                    <option value="option4">Option4</option>
-                                    <option value="option5">Option5</option>
+                                <select required name="hName" id="hName">
+                                    <?php
+                                    include "./database/conn.php";
+                                    $sql1 = "SELECT * FROM hotel";
+                                    $result1 = mysqli_query($conn, $sql1);
+                                    while ($row1 = mysqli_fetch_assoc($result1)) {
+                                        echo '<option value="' . $row1["hotel_name"] . '">' . $row1["hotel_name"] . '</option>';
+                                    }
+                                    ?>
                                 </select>
                             </div>
 
@@ -147,34 +151,54 @@ session_start();
                                 </div>
                             </div>
 
-                            <div class="details hotel-4" onclick="document.getElementById('hotel-form').submit();">
+                            <div class="details hotel-4" id="hotel-form-btn">
                                 <i class="fas fa-search"></i>
+                                <script>
+                                    document.getElementById('hotel-form-btn').addEventListener('click', () => {
+                                        <?php
+                                        if (isset($_SESSION['use'])) {
+                                            echo "document.getElementById('hotel-form').submit();";
+                                        } else {
+                                            echo "document.querySelector('.log-background').style.opacity = 1;
+                                            document.querySelector('.log-background').style.visibility = 'visible';";
+                                        }
+                                        ?>
+                                    })
+                                </script>;
                             </div>
                         </form>
                     </div>
                     <div class="tab tab-2">
-                        <form class="innerTab" id="flight-form" action="" method="get">
+                        <form class="innerTab" id="flight-form" action="transport.php" method="POST">
                             <div class="details flight-1">
                                 <div class="fLocation">
                                     <label for="fForm">From</label>
                                     <select name="fForm" id="fForm">
-                                        <option value="" selected disabled>Select One</option>
-                                        <option value="option1">Option1</option>
-                                        <option value="option2">Option2</option>
-                                        <option value="option3">Option3</option>
-                                        <option value="option4">Option4</option>
-                                        <option value="option5">Option5</option>
+                                        <option value="Chandigarh" selected>Chandigarh</option>
+                                        <?php
+                                        $sql3 = "SELECT * FROM transport";
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        if (mysqli_num_rows($result3) > 0) {
+                                            while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                if ($row3['from'] != Null) {
+                                                    echo '<option value="' . $row3['from'] . '">' . $row3['from'] . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="fLocation">
                                     <label for="fTo">TO</label>
                                     <select name="fTo" id="fTo">
-                                        <option value="" selected disabled>Select One</option>
-                                        <option value="option1">Option1</option>
-                                        <option value="option2">Option2</option>
-                                        <option value="option3">Option3</option>
-                                        <option value="option4">Option4</option>
-                                        <option value="option5">Option5</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        while ($row3 = mysqli_fetch_assoc($result3)) {
+                                            if ($row3['to'] != Null) {
+                                                echo '<option value="' . $row3['to'] . '">' . $row3['to'] . '</option>';
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -194,42 +218,66 @@ session_start();
                                 </div>
                                 <div class="f32">
                                     <select name="fClass" id="fClass">
-                                        <option value="Economy" selected>Economy Class</option>
-                                        <option value="Option-1">Option-1</option>
-                                        <option value="Option-2">Option-2</option>
-                                        <option value="Option-3">Option-3</option>
-                                        <option value="Option-4">Option-4</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        while ($row3 = mysqli_fetch_assoc($result3)) {
+                                            if ($row3['flight_class'] != Null) {
+                                                echo '<option value="' . $row3['flight_class'] . '">' . $row3['flight_class'] . '</option>';
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="details flight-4" onclick="document.getElementById('flight-form').submit();">
+
+                            <div class="details flight-4" id="flight-form-btn">
                                 <i class="fas fa-search"></i>
+                                <input type="hidden" name="transport" value="Flight">
+                                <script>
+                                    document.getElementById('flight-form-btn').addEventListener('click', () => {
+                                        <?php
+                                        if (isset($_SESSION['use'])) {
+                                            echo "document.getElementById('flight-form').submit();";
+                                        } else {
+                                            echo "document.querySelector('.log-background').style.opacity = 1;
+                                            document.querySelector('.log-background').style.visibility = 'visible';";
+                                        }
+                                        ?>
+                                    })
+                                </script>;
                             </div>
                         </form>
                     </div>
                     <div class="tab tab-3">
-                        <form class="innerTab" id="train-form" action="" method="get">
+                        <form class="innerTab" id="train-form" action="transport.php" method="POST">
                             <div class="details train-1">
                                 <div class="tLocation">
                                     <label for="tForm">From</label>
-                                    <select name="tForm" id="tForm">
-                                        <option value="" selected disabled>Select One</option>
-                                        <option value="option1">Option1</option>
-                                        <option value="option2">Option2</option>
-                                        <option value="option3">Option3</option>
-                                        <option value="option4">Option4</option>
-                                        <option value="option5">Option5</option>
+                                    <select name="tFrom" id="tForm">
+                                        <option value="Chandigarh" selected>Chandigarh</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        if (mysqli_num_rows($result3) > 0) {
+                                            while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                if ($row3['from'] != Null) {
+                                                    echo '<option value="' . $row3['from'] . '">' . $row3['from'] . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="tLocation">
                                     <label for="tTo">TO</label>
                                     <select name="tTo" id="tTo">
-                                        <option value="" selected disabled>Select One</option>
-                                        <option value="option1">Option1</option>
-                                        <option value="option2">Option2</option>
-                                        <option value="option3">Option3</option>
-                                        <option value="option4">Option4</option>
-                                        <option value="option5">Option5</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        while ($row3 = mysqli_fetch_assoc($result3)) {
+                                            if ($row3['to'] != Null) {
+                                                echo '<option value="' . $row3['to'] . '">' . $row3['to'] . '</option>';
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -249,42 +297,68 @@ session_start();
                                 </div>
                                 <div class="f32">
                                     <select name="tClass" id="tClass">
-                                        <option value="SL" selected>SL Class</option>
-                                        <option value="Option-1">Option-1</option>
-                                        <option value="Option-2">Option-2</option>
-                                        <option value="Option-3">Option-3</option>
-                                        <option value="Option-4">Option-4</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        while ($row3 = mysqli_fetch_assoc($result3)) {
+                                            if ($row3['train_class'] != Null) {
+                                                echo '<option value="' . $row3['train_class'] . '">' . $row3['train_class'] . '</option>';
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="details train-4" onclick="document.getElementById('train-form').submit();">
+
+                            <div class="details train-4" id="train-form-btn">
                                 <i class="fas fa-search"></i>
+                                <input type="hidden" name="transport" value="Train">
+                                <script>
+                                    document.getElementById('train-form-btn').addEventListener('click', () => {
+                                        <?php
+                                        if (isset($_SESSION['use'])) {
+                                            echo "document.getElementById('train-form').submit();";
+                                        } else {
+                                            echo "document.querySelector('.log-background').style.opacity = 1;
+                                            document.querySelector('.log-background').style.visibility = 'visible';";
+                                        }
+                                        ?>
+                                    })
+                                </script>;
                             </div>
                         </form>
                     </div>
                     <div class="tab tab-4">
-                        <form class="innerTab" id="bus-form" action="" method="get">
+                        <form class="innerTab" id="bus-form" action="transport.php" method="POST">
                             <div class="details bus-1">
                                 <div class="bLocation">
                                     <label for="bForm">From</label>
-                                    <select name="bForm" id="bForm">
-                                        <option value="" selected disabled>Select One</option>
-                                        <option value="option1">Option1</option>
-                                        <option value="option2">Option2</option>
-                                        <option value="option3">Option3</option>
-                                        <option value="option4">Option4</option>
-                                        <option value="option5">Option5</option>
+                                    <select name="bFrom" id="bForm">
+                                        <option value="Chandigarh" selected>Chandigarh</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        if (mysqli_num_rows($result3) > 0) {
+                                            while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                if ($row3['from'] != Null) {
+                                                    echo '<option value="' . $row3['from'] . '">' . $row3['from'] . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="bLocation">
                                     <label for="bTo">TO</label>
                                     <select name="bTo" id="bTo">
-                                        <option value="" selected disabled>Select One</option>
-                                        <option value="option1">Option1</option>
-                                        <option value="option2">Option2</option>
-                                        <option value="option3">Option3</option>
-                                        <option value="option4">Option4</option>
-                                        <option value="option5">Option5</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        if (mysqli_num_rows($result3) > 0) {
+                                            while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                if ($row3['to'] != Null) {
+                                                    echo '<option value="' . $row3['to'] . '">' . $row3['to'] . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -304,40 +378,70 @@ session_start();
                                 </div>
                                 <div class="f32">
                                     <select name="bClass" id="bClass">
-                                        <option value="AC" selected>AC Class</option>
-                                        <option value="Option-1">Option-1</option>
-                                        <option value="Option-2">Option-2</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        if (mysqli_num_rows($result3) > 0) {
+                                            while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                if ($row3['bus_class'] != Null) {
+                                                    echo '<option value="' . $row3['bus_class'] . '">' . $row3['bus_class'] . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="details bus-4" onclick="document.getElementById('bus-form').submit();">
+
+                            <div class="details bus-4" id="bus-form-btn">
                                 <i class="fas fa-search"></i>
+                                <input type="hidden" name="transport" value="Bus">
+                                <script>
+                                    document.getElementById('bus-form-btn').addEventListener('click', () => {
+                                        <?php
+                                        if (isset($_SESSION['use'])) {
+                                            echo "document.getElementById('bus-form').submit();";
+                                        } else {
+                                            echo "document.querySelector('.log-background').style.opacity = 1;
+                                            document.querySelector('.log-background').style.visibility = 'visible';";
+                                        }
+                                        ?>
+                                    })
+                                </script>;
                             </div>
                         </form>
                     </div>
                     <div class="tab tab-5">
-                        <form class="innerTab" id="car-form" action="" method="get">
+                        <form class="innerTab" id="car-form" action="transport.php" method="POST">
                             <div class="details car-1">
                                 <div class="cLocation">
                                     <label for="cForm">From</label>
-                                    <select name="cForm" id="cForm">
-                                        <option value="" selected disabled>Select One</option>
-                                        <option value="option1">Option1</option>
-                                        <option value="option2">Option2</option>
-                                        <option value="option3">Option3</option>
-                                        <option value="option4">Option4</option>
-                                        <option value="option5">Option5</option>
+                                    <select name="cFrom" id="cForm">
+                                        <option value="Chandigarh" selected>Chandigarh</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        if (mysqli_num_rows($result3) > 0) {
+                                            while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                if ($row3['from'] != Null) {
+                                                    echo '<option value="' . $row3['from'] . '">' . $row3['from'] . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="cLocation">
                                     <label for="cTo">TO</label>
                                     <select name="cTo" id="cTo">
-                                        <option value="" selected disabled>Select One</option>
-                                        <option value="option1">Option1</option>
-                                        <option value="option2">Option2</option>
-                                        <option value="option3">Option3</option>
-                                        <option value="option4">Option4</option>
-                                        <option value="option5">Option5</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        if (mysqli_num_rows($result3) > 0) {
+                                            while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                if ($row3['to'] != Null) {
+                                                    echo '<option value="' . $row3['to'] . '">' . $row3['to'] . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -357,13 +461,35 @@ session_start();
                                 </div>
                                 <div class="f32">
                                     <select name="cClass" id="cClass">
-                                        <option value="AC" selected>AC Class</option>
-                                        <option value="Non Ac">Non Ac</option>
+                                        <?php
+                                        $result3 = mysqli_query($conn, $sql3) or die("Query Failed!!");
+                                        if (mysqli_num_rows($result3) > 0) {
+                                            while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                if ($row3['car_class'] != Null) {
+                                                    echo '<option value="' . $row3['car_class'] . '">' . $row3['car_class'] . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="details car-4" onclick="document.getElementById('car-form').submit();">
+
+                            <div class="details car-4" id="car-form-btn">
                                 <i class="fas fa-search"></i>
+                                <input type="hidden" name="transport" value="Car">
+                                <script>
+                                    document.getElementById('car-form-btn').addEventListener('click', () => {
+                                        <?php
+                                        if (isset($_SESSION['use'])) {
+                                            echo "document.getElementById('car-form').submit();";
+                                        } else {
+                                            echo "document.querySelector('.log-background').style.opacity = 1;
+                                            document.querySelector('.log-background').style.visibility = 'visible';";
+                                        }
+                                        ?>
+                                    })
+                                </script>;
                             </div>
                         </form>
                     </div>
@@ -380,114 +506,73 @@ session_start();
                 </div>
             </div>
 
+            <?php
+            if (isset($_SESSION['msg'])) {
+                if ($_SESSION['msg'] == "F") {
+                    echo "<script>swal('Error!', 'Booking Failed!!!', 'error');</script>";
+                    $_SESSION['msg'] = null;
+                } else {
+                    echo "<script>swal('Done!', '{$_SESSION['msg']}', 'success');</script>";
+                    $_SESSION['msg'] = null;
+                }
+            }
+            ?>
+
             <div class="row-3">
                 <div class="blogHeading">
                     <div class="blogH-1">
                         <div class="aniBar"></div>
                         <span onclick="clickToOpenBlogTab(0)">Blogs</span>
                         <span onclick="clickToOpenBlogTab(1)">
-                        <?php
-                        if(isset($_SESSION['use'])){
-                            echo 'My Blogs';
-                        }
-                        ?>
+                            <?php
+                            if (isset($_SESSION['use'])) {
+                                echo 'My Blogs';
+                            }
+                            ?>
                         </span>
                     </div>
                     <div class="blogH-2">
-                    <?php
-                        if(isset($_SESSION['use'])){
+                        <?php
+                        if (isset($_SESSION['use'])) {
                             echo '<a href="#"><i class="fa fa-plus-square"></i>Add</a>';
-                        }                            
-                    ?>
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="blogMainContainer">
                     <div class="blogContainer blog-1">
                         <div class="innerBlogContainer">
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/1.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span><strong>by</strong> Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/2.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span><strong>by</strong> Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/3.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span><strong>by</strong> Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/4.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span><strong>by</strong> Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/1.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span><strong>by</strong> Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/2.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span><strong>by</strong> Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
+
+                            <?php
+                            $sqlUserBlog = "SELECT * FROM blog ORDER BY blog_id DESC";
+                            $resultUserBlog = mysqli_query($conn, $sqlUserBlog) or die("Query Failed!!");
+                            if (mysqli_num_rows($resultUserBlog) > 0) {
+                                $i = 0;
+                                while (($rowUserBlog = mysqli_fetch_assoc($resultUserBlog)) && $i != 6) {
+                                    $i = $i + 1;
+                            ?>
+                                    <a href="#" class="blog">
+                                        <div class="blogImg">
+                                            <img src="./blog images/<?php echo $rowUserBlog['blog_image']; ?>" alt="">
+                                        </div>
+                                        <div class="blogData">
+                                            <h1>
+                                                <?php echo $rowUserBlog['blog_tittle']; ?>
+                                                <span><?php echo $rowUserBlog['date']; ?></span>
+                                            </h1>
+                                            <p><?php echo $rowUserBlog['blog_dec']; ?></p>
+                                            <div>
+                                                <span><?php echo $rowUserBlog['user_name']; ?></span>
+                                                <img src="./profile images/<?php echo $rowUserBlog['user_image']; ?>" alt="Profile Picture">
+                                            </div>
+                                        </div>
+                                    </a>
+                            <?php
+                                }
+                            } else {
+                                echo "<h1>No Blog</h1>";
+                            }
+                            ?>
                         </div>
                         <span class="moreBtn">
                             <a href="#">
@@ -497,90 +582,34 @@ session_start();
                     </div>
                     <div class="blogContainer blog-2">
                         <div class="innerBlogContainer">
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/1.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span>by Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/2.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span>by Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/3.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span>by Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/4.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span>by Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/3.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span>by Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="blog">
-                                <div class="blogImg">
-                                    <img src="./images/1.jpg" alt="">
-                                </div>
-                                <div class="blogData">
-                                    <h1>1st Heading <span>12/12/2020</span></h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, veritatis. Lorem
-                                        ipsum dolor sit amet consectetur adipisicing...</p>
-                                    <div>
-                                        <span>by Xyz Abc</span>
-                                        <img src="https://picsum.photos/id/237/50/60" alt="Profile Picture">
-                                    </div>
-                                </div>
-                            </a>
+                            <?php
+                            $sqlUserBlog = "SELECT * FROM user_data JOIN blog ON user_data.id = blog.user_id WHERE user_data.id = '{$_SESSION['user_id']}' ORDER BY blog.blog_id DESC";
+                            $resultUserBlog = mysqli_query($conn, $sqlUserBlog) or die("Query Failed!!");
+                            if (mysqli_num_rows($resultUserBlog) > 0) {
+                                $i = 0;
+                                while (($rowUserBlog = mysqli_fetch_assoc($resultUserBlog)) && $i != 6) {
+                                    $i = $i + 1;
+                            ?>
+                                    <a href="#" class="blog">
+                                        <div class="blogImg">
+                                            <img src="./blog images/<?php echo $rowUserBlog['blog_image']; ?>" alt="">
+                                        </div>
+                                        <div class="blogData">
+                                            <h1>
+                                                <?php echo $rowUserBlog['blog_tittle']; ?>
+                                                <span><?php echo $rowUserBlog['date']; ?></span>
+                                            </h1>
+                                            <p><?php echo $rowUserBlog['blog_dec']; ?></p>
+                                            <div>
+                                                <span><?php echo $rowUserBlog['user_name']; ?></span>
+                                                <img src="./profile images/<?php echo $rowUserBlog['image']; ?>" alt="Profile Picture">
+                                            </div>
+                                        </div>
+                                    </a>
+                            <?php
+                                }
+                            }
+                            ?>
                         </div>
                         <span class="moreBtn">
                             <a href="#">

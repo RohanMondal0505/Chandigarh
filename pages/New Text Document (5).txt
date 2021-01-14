@@ -1,7 +1,0 @@
-hotel  5
-Hometel hotel
-Lemon Tree hotel
-hotel city plaza 7
-Hotel KLG Starlight
-Toy redfox hotel
-

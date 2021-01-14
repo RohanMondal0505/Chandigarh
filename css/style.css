@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Potta+One&family=Yusei+Magic&display=swap");
 * {
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 html {
@@ -14,6 +17,7 @@ html {
   --blueHover:   rgb(1, 72, 131);
   --gray:  rgb(120, 123, 124);
   --row1Bg: rgba(15, 41, 77, 0.6);
+  --darkBlue:  rgb(0, 81, 255);
 }
 
 a {
@@ -61,10 +65,17 @@ header .left-container {
 }
 
 header .left-container .logo {
+  display: block;
   position: relative;
-  left: 5rem;
+  left: 1.5rem;
   font-weight: 900;
   font-size: 3.5rem;
+  cursor: pointer;
+  width: 30rem;
+}
+
+header .left-container .logo img {
+  width: 100%;
 }
 
 header .left-container .search-bar #search-form {
@@ -240,10 +251,12 @@ header .right-container .login-section .profile-section .info {
 
 header .right-container .login-section .profile-section .info span {
   font-size: 2.8rem;
+  font-family: 'Potta One', cursive;
 }
 
 header .right-container .login-section .profile-section .info p {
   font-size: 1.7rem;
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 header .right-container .login-section .profile-section .p-pic {
@@ -1332,7 +1345,6 @@ main .row-3 .blogHeading {
 
 main .row-3 .blogHeading .blogH-1 {
   position: relative;
-  width: 18.6rem;
 }
 
 main .row-3 .blogHeading .blogH-1 .aniBar {
