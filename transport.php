@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if($_POST['transport'] == "Flight"){
     $name = $_POST['transport'];
     $from = $_POST['fForm'];

@@ -29,9 +29,10 @@ li {
 }
 
 .main-container {
-  height: 100vh;
+  min-height: 100vh;
   font-size: 1.5rem;
   position: relative;
+  background: rgba(212, 212, 212, 0.3);
 }
 
 header {
@@ -787,8 +788,8 @@ main .row-2 .background {
   left: 0;
   -webkit-clip-path: ellipse(58% 40% at 50% 20%);
           clip-path: ellipse(58% 40% at 50% 20%);
-  background: url(../images/background.webp) center no-repeat;
-  background-position-y: -100%;
+  background: url(../images/bg.jpg) center no-repeat;
+  background-size: 100%;
   z-index: 1;
 }
 

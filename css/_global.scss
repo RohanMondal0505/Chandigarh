@@ -31,7 +31,8 @@ li{
     list-style: none;
 }
 .main-container{
-    height: 100vh;
+    min-height: 100vh;
     font-size: 1.5rem;
     position: relative;
+    background: rgba(212, 212, 212,.3);
 }

@@ -20,15 +20,18 @@ if (isset($_POST['logIn'])){
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_email'] = $row['email'];
             $_SESSION['use'] = "T";
-            header("Location: {$hostname}/");
+            // header("Location: {$hostname}/");
+            echo "<script>window.location='{$hostname}/';</script>";
         }else{
-            header("Location: {$hostname}/");
+            // header("Location: {$hostname}/");
+            echo "<script>window.location='{$hostname}/';</script>";
             $_SESSION['logError2'] = "Password not Match";
             $_SESSION['logPOP'] = "T";
         }
 
     }else{
-        header("Location: {$hostname}/");
+        // header("Location: {$hostname}/");
+        echo "<script>window.location='{$hostname}/';</script>";
         $_SESSION['logError1'] = "Email Does Not Exits";
         $_SESSION['logPOP'] = "T";
     }

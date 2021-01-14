@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandigarh Traveling</title>
+    <title>Chandigarh Trip</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -534,7 +534,7 @@ session_start();
                     <div class="blogH-2">
                         <?php
                         if (isset($_SESSION['use'])) {
-                            echo '<a href="#"><i class="fa fa-plus-square"></i>Add</a>';
+                            echo '<a href="./addblog.php"><i class="fa fa-plus-square"></i>Add</a>';
                         }
                         ?>
                     </div>

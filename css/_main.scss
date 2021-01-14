@@ -73,8 +73,9 @@ main{
             top: 0;
             left: 0;
             clip-path: ellipse(58% 40% at 50% 20%);
-            background: url(../images/background.webp) center no-repeat;
-            background-position-y: -100%;
+            background: url(../images/bg.jpg) center no-repeat;
+            // background-position-y: -10%;
+            background-size: 100%;
             z-index: 1;
 
             &::before{

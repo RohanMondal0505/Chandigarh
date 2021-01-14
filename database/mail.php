@@ -11,10 +11,9 @@ if (isset($_POST['submit'])) {
     $class = $_POST['Class'];
 
 
-    $to_email = "rohanmondal1437@gmail.com";
-    // $to_email = $_SESSION['user_email'];
+    $to_email = $_SESSION['user_email'];
     $subject = "$name Booked";
-    echo $body = "
+    $body = "
                 $name Number : $rand
                 From : $from
                 To : $to
