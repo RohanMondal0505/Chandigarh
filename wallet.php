@@ -16,7 +16,10 @@ session_start();
 
 <body>
     <div class="main-container">
+        <!-- Header Section Start -->
         <?php include "./pages/header.php" ?>
+        <!-- x Header Section End x -->
+
         <marquee behavior="scroll" direction="down">
             <center>
                 <b><i>
@@ -65,6 +68,10 @@ session_start();
         <marquee behavior="alternate">
             <font color="red">Thanks for visiting our site Thank you</font>
         </marquee>
+
+        <!-- Footer Section Start -->
+        <?php include "./pages/footer.php"; ?>
+        <!-- x Footer Section End x -->
     </div>
 </body>
 

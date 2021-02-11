@@ -4,8 +4,8 @@ session_start();
 include "./conn.php";
 
 if (isset($_POST['logIn'])){
-    echo $email = $_POST['email'];
-    echo $password = $_POST['password'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
 
     $sql1 = "SELECT email FROM user_data WHERE email = '{$email}'";

@@ -49,8 +49,10 @@ session_start();
             }
         }
         ?>
-
-
+        
+        <!-- Footer Section Start -->
+        <?php include "./pages/footer.php"; ?>
+        <!-- x Footer Section End x -->
     </div>
 </body>
 

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Potta+One&family=Yusei+Magic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -33,6 +34,13 @@ li {
   font-size: 1.5rem;
   position: relative;
   background: rgba(212, 212, 212, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 header {
@@ -151,8 +159,8 @@ header .left-container .help #google_translate_element {
   height: 100%;
   margin-right: 2rem;
   padding: .5rem;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 header .left-container .help #google_translate_element * {
@@ -162,15 +170,15 @@ header .left-container .help #google_translate_element * {
 header .left-container .help #google_translate_element:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
-  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-          box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 header .left-container .help a.help-a {
   display: inline-block;
   padding: .5rem 1rem;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   -webkit-transition: all .3s;
   transition: all .3s;
 }
@@ -178,8 +186,9 @@ header .left-container .help a.help-a {
 header .left-container .help a.help-a:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
-  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-          box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  background: var(--blue);
 }
 
 header .right-container {
@@ -217,19 +226,20 @@ header .right-container .login-section .buttons a {
   display: inline-block;
   margin-right: 2rem;
   padding: .5rem 1rem;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  -webkit-transition: -webkit-box-shadow .3s;
-  transition: -webkit-box-shadow .3s;
-  transition: box-shadow .3s;
-  transition: box-shadow .3s, -webkit-box-shadow .3s;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  -webkit-transition: -webkit-box-shadow .4s;
+  transition: -webkit-box-shadow .4s;
+  transition: box-shadow .4s;
+  transition: box-shadow .4s, -webkit-box-shadow .4s;
 }
 
 header .right-container .login-section .buttons a:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
-  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-          box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  background: var(--blue);
 }
 
 header .right-container .login-section .buttons a:last-child {
@@ -703,6 +713,7 @@ header .right-container .logout-section a:hover span {
 main {
   width: 100%;
   background: rgba(212, 212, 212, 0.3);
+  margin-bottom: 5rem;
 }
 
 main .row-1 {
@@ -788,7 +799,8 @@ main .row-2 .background {
   left: 0;
   -webkit-clip-path: ellipse(58% 40% at 50% 20%);
           clip-path: ellipse(58% 40% at 50% 20%);
-  background: url(../images/bg.jpg) center no-repeat;
+  background: url(../images/nbg.jpeg) center no-repeat;
+  background-position-y: 9%;
   background-size: 100%;
   z-index: 1;
 }
@@ -895,6 +907,7 @@ main .row-2 .bottom .tab .innerTab .details input, main .row-2 .bottom .tab .inn
   cursor: pointer;
   font-weight: 700;
   color: #454255;
+  background: #fff;
 }
 
 main .row-2 .bottom .tab .innerTab .details input:focus, main .row-2 .bottom .tab .innerTab .details select:focus {
@@ -1608,6 +1621,48 @@ main .row-33 .owl-carousel .owl-dots {
   bottom: 0;
   width: 100%;
   /* border: 1px solid #000; */
+}
+
+footer {
+  margin-top: 1rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  background: var(--blueHover);
+  position: absolute;
+  bottom: 0;
+}
+
+footer h1 {
+  font-size: 1.8rem;
+  font-weight: 100;
+  font-family: 'Dancing Script', cursive;
+  color: #fff;
+}
+
+footer h1 span, footer h1 a {
+  font-family: 'Dancing Script', cursive;
+  font-weight: bolder;
+  font-size: 2rem;
+  color: #fff;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+}
+
+footer h1 span:first-child, footer h1 a:first-child {
+  margin-right: 1rem;
+}
+
+footer h1 a:hover {
+  color: red;
 }
 
 @media (max-width: 1700px) {

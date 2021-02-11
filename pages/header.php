@@ -86,7 +86,7 @@
     </div>
 </div>
 <?php
-if ((!isset($_SESSION['use'])) && ($_SERVER['REQUEST_URI'] == '/PROJECT/Chandigarh/1' || $_SERVER['REQUEST_URI'] == '/PROJECT/Chandigarh/index.php1')) { ?>
+if ((!isset($_SESSION['use'])) && ($_SERVER['REQUEST_URI'] == '/PROJECT/Chandigarh/' || $_SERVER['REQUEST_URI'] == '/PROJECT/Chandigarh/index.php')) { ?>
     <script>
         setTimeout(() => {
             document.querySelector(".log-background").style.opacity = 1;
@@ -102,7 +102,7 @@ if (isset($_SESSION['logPOP'])) { ?>
         document.querySelector(".log-background").style.visibility = "visible";
         <?php
         if (isset($_SESSION['signSMS'])) { ?>
-            alert("<?php echo $_SESSION['signSMS']; ?>");
+            swal('Error!', '<?php echo $_SESSION['signSMS']; ?>', 'error');
         <?php
             $_SESSION['signSMS'] = null;
         }
@@ -140,7 +140,7 @@ if (isset($_SESSION['logPOP'])) { ?>
             </script>
             <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-            <a href="#" target="_blank" class="help-a">Help</a>
+            <a href="./help.php" class="help-a">Help</a>
         </div>
     </div>
     <div class="right-container">
@@ -148,8 +148,10 @@ if (isset($_SESSION['logPOP'])) { ?>
         if (isset($_SESSION['use'])) { ?>
             <div class="login-section">
                 <div class="buttons">
-                    <a href="./wallet.php">Wallet</a>
-                    <a href="#" target="_blank">My Orders</a>
+                    <!-- FIXME: -->
+                    <a class="<?php $active?>" href="./index.php">Home</a>
+                    <a class="<?php $active?>" href="./wallet.php">Wallet</a>
+                    <a class="<?php $active?>" href="./myorder.php">My Orders</a>
                 </div>
                 <?php
                 include "./database/conn.php";

@@ -4,6 +4,8 @@
         "addbloh",
         "adipisicing",
         "amet",
+        "arish",
+        "aurabh",
         "chnd",
         "consectetur",
         "container",
@@ -13,9 +15,11 @@
         "dokdo",
         "dolor",
         "elit",
+        "hashank",
         "ipsum",
         "lorem",
         "minmax",
+        "myorder",
         "potta",
         "signin",
         "sit",
@@ -23,5 +27,6 @@
         "veritatis",
         "webp",
         "yusei"
-    ]
+    ],
+    "compile-hero.disable-compile-files-on-did-save-code": true
 }
