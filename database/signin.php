@@ -14,7 +14,6 @@ if (isset($_POST['signIn'])){
     $imgExt = strtolower(end($imgExt));
     $extensions = array("jpeg","jpg","png");
 
-
     $sql = "SELECT email FROM user_data WHERE email = '{$sEmail}'";
     $result = mysqli_query($conn,$sql);
 
