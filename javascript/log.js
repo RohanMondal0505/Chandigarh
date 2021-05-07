@@ -166,7 +166,7 @@ function conditionCheckOnFocus() {
             result = setError(inputType[4]);
         }
     })
-    inputType[4].addEventListener("focusout", () => {
+    inputType[4].addEventListener("keyup", () => {
         if (inputType[4].value === '' || inputType[4].value == null) {
             result = setError(inputType[4]);
         } else if (inputType[3].value === inputType[4].value) {

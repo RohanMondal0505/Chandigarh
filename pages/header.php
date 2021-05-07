@@ -101,9 +101,14 @@ if (isset($_SESSION['logPOP'])) { ?>
         document.querySelector(".log-background").style.opacity = 1;
         document.querySelector(".log-background").style.visibility = "visible";
         <?php
-        if (isset($_SESSION['signSMS'])) { ?>
-            swal('Error!', '<?php echo $_SESSION['signSMS']; ?>', 'error');
+        if (isset($_SESSION['signSMS'])) {
+            if ($_SESSION['logPOP'] == "T") { ?>
+                swal('Done!', '<?php echo $_SESSION['signSMS']; ?>', 'success');
+            <?php
+            } else { ?>
+                swal('Error!', '<?php echo $_SESSION['signSMS']; ?>', 'error');
         <?php
+            }
             $_SESSION['signSMS'] = null;
         }
         ?>
@@ -114,6 +119,20 @@ if (isset($_SESSION['logPOP'])) { ?>
 ?>
 <!-- x Login Form Start x -->
 
+
+<?php
+if ($title == "Home") {
+    $active1 = "active";
+}else if ($title == "Wallet") {
+    $active2 = "active";
+}else if ($title == "Wallet") {
+    $active2 = "active";
+}else if ($title == "My Order") {
+    $active3 = "active";
+}else if ($title == "Help") {
+    $active4 = "active";
+}
+?>
 
 
 <!-- Header Section Start -->
@@ -139,8 +158,6 @@ if (isset($_SESSION['logPOP'])) { ?>
                 }
             </script>
             <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-            <a href="./help.php" class="help-a">Help</a>
         </div>
     </div>
     <div class="right-container">
@@ -148,10 +165,10 @@ if (isset($_SESSION['logPOP'])) { ?>
         if (isset($_SESSION['use'])) { ?>
             <div class="login-section">
                 <div class="buttons">
-                    <!-- FIXME: -->
-                    <a class="<?php $active?>" href="./index.php">Home</a>
-                    <a class="<?php $active?>" href="./wallet.php">Wallet</a>
-                    <a class="<?php $active?>" href="./myorder.php">My Orders</a>
+                    <a href="./help.php" class="<?php echo $active4 ?>">Help</a>
+                    <a class="<?php echo $active1 ?>" href="./index.php">Home</a>
+                    <a class="<?php echo $active2 ?>" href="./wallet.php">Wallet</a>
+                    <a class="<?php echo $active3 ?>" href="./myorder.php">My Orders</a>
                 </div>
                 <?php
                 include "./database/conn.php";
@@ -187,5 +204,6 @@ if (isset($_SESSION['logPOP'])) { ?>
         }
         ?>
     </div>
+    <div class="bar"></div>
 </header>
 <!-- x Header Section End x -->

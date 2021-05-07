@@ -1,5 +1,6 @@
 <?php
 session_start();
+$title = 'Transport';
 
 if($_POST['transport'] == "Flight"){
     $name = $_POST['transport'];
@@ -40,7 +41,7 @@ if($_POST['transport'] == "Car"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandigarh Traveling</title>
+    <title>Chandigarh Trip : <?php echo $title; ?> </title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -51,6 +52,7 @@ if($_POST['transport'] == "Car"){
 <body>
     <div class="main-container">
         <?php include "./pages/header.php" ?>
+
         <main>
             <div class="main">
                 <div class="row row1">
@@ -86,7 +88,10 @@ if($_POST['transport'] == "Car"){
                 </div>
             </div>
         </main>
-        
+
+        <!-- Footer Section Start -->
+        <?php include "./pages/footer.php"; ?>
+        <!-- x Footer Section End x -->        
     </div>
 </body>
 

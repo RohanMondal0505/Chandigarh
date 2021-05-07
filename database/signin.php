@@ -21,12 +21,12 @@ if (isset($_POST['signIn'])){
     if(mysqli_num_rows($result) > 0){
         header("Location: {$hostname}/index.php");
         $_SESSION['signSMS'] = "This Email id Already Present";
-        $_SESSION['logPOP'] = "T";
+        $_SESSION['logPOP'] = "F";
     }else{
-        if(isset($_FILES['image'])){
+        if(strlen($image) > 2){
             if(in_array($imgExt,$extensions) === false){
                 $_SESSION['signSMS'] = "This Extensions Does Not Support";
-                $_SESSION['logPOP'] = "T";
+                $_SESSION['logPOP'] = "F";
                 header("Location: {$hostname}/");
                 die();
             }else{
@@ -44,6 +44,5 @@ if (isset($_POST['signIn'])){
             $_SESSION['signSMS'] = "Sign In Success";
             $_SESSION['logPOP'] = "T";
         }
-
     }
 }

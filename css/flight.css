@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Potta+One&family=Yusei+Magic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -42,12 +43,23 @@ li {
           flex-direction: column;
 }
 
+main {
+  margin-bottom: 5rem;
+  background: rgba(212, 212, 212, 0.3);
+}
+
 header {
   width: 100%;
   height: 7rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.2);
   -webkit-user-select: none;
@@ -58,8 +70,8 @@ header {
 }
 
 header .left-container {
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
   padding: 0 1rem 0 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -76,8 +88,6 @@ header .left-container .logo {
   display: block;
   position: relative;
   left: 1.5rem;
-  font-weight: 900;
-  font-size: 3.5rem;
   cursor: pointer;
   width: 30rem;
 }
@@ -156,7 +166,6 @@ header .left-container .help {
 header .left-container .help #google_translate_element {
   display: inline-block;
   height: 100%;
-  margin-right: 2rem;
   padding: .5rem;
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
@@ -173,26 +182,11 @@ header .left-container .help #google_translate_element:hover {
           box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-header .left-container .help a.help-a {
-  display: inline-block;
-  padding: .5rem 1rem;
-  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  -webkit-transition: all .3s;
-  transition: all .3s;
-}
-
-header .left-container .help a.help-a:hover {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-  background: var(--blue);
-}
-
 header .right-container {
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
+  width: 100%;
+  height: 100%;
+  -ms-flex-preferred-size: 55%;
+      flex-basis: 55%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -265,6 +259,7 @@ header .right-container .login-section .profile-section .info span {
 }
 
 header .right-container .login-section .profile-section .info p {
+  margin-top: -.5rem;
   font-size: 1.7rem;
   font-family: 'Yusei Magic', sans-serif;
 }
@@ -328,6 +323,170 @@ header .right-container .logout-section a span {
 header .right-container .logout-section a:hover span {
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
+}
+
+header .bar {
+  width: 3rem;
+  height: 3rem;
+  display: none;
+  margin-right: 5rem;
+  margin-left: 3rem;
+  border: 1px solid #000;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f007";
+}
+
+.active {
+  background: var(--blue);
+}
+
+@media (max-width: 1700px) {
+  header .left-container .logo {
+    left: 0rem;
+    width: 27rem;
+  }
+  header .left-container .search-bar #search-form {
+    width: 20rem;
+  }
+  header .left-container .help {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 1550px) {
+  header .left-container .logo {
+    width: 25rem;
+  }
+  header .left-container .search-bar #search-form {
+    width: 18rem;
+  }
+  header .left-container .help {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 1450px) {
+  header .left-container .logo {
+    width: 22rem;
+  }
+  header .left-container .search-bar #search-form {
+    width: 16rem;
+  }
+  header .left-container .help {
+    top: -1rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1340px) {
+  header .left-container .logo {
+    width: 20rem;
+  }
+  header .left-container .search-bar #search-form {
+    width: 14rem;
+  }
+  header .left-container .help {
+    font-size: 1.3rem;
+  }
+  header .right-container .login-section {
+    padding: 0 0rem 0 0rem;
+  }
+  header .right-container .login-section .buttons a {
+    margin-right: 1rem;
+    padding: .5rem 1rem;
+  }
+}
+
+@media (max-width: 1250px) {
+  header .left-container {
+    -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+  }
+  header .left-container .logo {
+    width: 25rem;
+  }
+  header .left-container .search-bar #search-form {
+    width: 20rem;
+  }
+  header .left-container .help {
+    top: 0rem;
+    font-size: 1.3rem;
+  }
+  header .right-container {
+    -ms-flex-preferred-size: 40%;
+        flex-basis: 40%;
+  }
+  header .right-container .login-section {
+    padding: 0 0rem 0 0rem;
+  }
+  header .right-container .login-section .buttons {
+    position: absolute;
+    display: none;
+  }
+  header .right-container .profile-section {
+    margin-left: 5rem;
+  }
+  header .bar {
+    display: block;
+  }
+}
+
+@media (max-width: 1150px) {
+  header .left-container {
+    -ms-flex-preferred-size: 65%;
+        flex-basis: 65%;
+  }
+  header .left-container .logo {
+    width: 20rem;
+  }
+  header .left-container .search-bar #search-form {
+    width: 18rem;
+  }
+  header .right-container {
+    border: 1px solid #000;
+    -ms-flex-preferred-size: 35%;
+        flex-basis: 35%;
+  }
+  header .right-container .login-section .buttons {
+    position: absolute;
+    display: none;
+  }
+  header .right-container .profile-section {
+    margin-left: 3rem;
+  }
+  header .bar {
+    margin-right: 4rem;
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 980px) {
+  header .left-container {
+    -ms-flex-preferred-size: 65%;
+        flex-basis: 65%;
+  }
+  header .left-container .logo {
+    width: 20rem;
+  }
+  header .left-container .search-bar #search-form {
+    width: 18rem;
+  }
+  header .right-container {
+    -ms-flex-preferred-size: 35%;
+        flex-basis: 35%;
+  }
+  header .right-container .login-section .buttons {
+    position: absolute;
+    display: none;
+  }
+  header .right-container .profile-section {
+    margin-left: 3rem;
+  }
+  header .bar {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
 }
 
 .log-background {
@@ -707,6 +866,48 @@ header .right-container .logout-section a:hover span {
 
 .log-background .log-container .log-body-container .signin-container form .form-group:last-child {
   margin-top: 2.5rem;
+}
+
+footer {
+  margin-top: 1rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  background: var(--blueHover);
+  position: absolute;
+  bottom: 0;
+}
+
+footer h1 {
+  font-size: 1.8rem;
+  font-weight: 100;
+  font-family: 'Dancing Script', cursive;
+  color: #fff;
+}
+
+footer h1 span, footer h1 a {
+  font-family: 'Dancing Script', cursive;
+  font-weight: bolder;
+  font-size: 2rem;
+  color: #fff;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+}
+
+footer h1 span:first-child, footer h1 a:first-child {
+  margin-right: 1rem;
+}
+
+footer h1 a:hover {
+  color: red;
 }
 
 .main-container {

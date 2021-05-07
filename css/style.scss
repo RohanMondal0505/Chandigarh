@@ -134,21 +134,10 @@
         }
     }
 }
-// FIXME:
+
 @media (max-width: 889px){
     html{
         font-size: 60%;
-    }
-    header{
-        .left-container .search-bar, .help{
-            display: none;
-        }
-        .left-container{
-            flex-basis: 10rem;
-        }
-        .right-container{
-            flex-basis: 10rem;
-        }
     }
     main{
         .row-2{  

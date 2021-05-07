@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include "./conn.php";
+
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $rand = $_POST['rand'];
@@ -27,9 +29,9 @@ if (isset($_POST['submit'])) {
 
     if (mail($to_email, $subject, $body, $header)) {
         $_SESSION['msg'] = "Booking Confirm !! Check Your Email...";
-        echo "<script>window.location = 'http://localhost/PROJECT/Chandigarh/index.php';</script>";
+        echo "<script>window.location = '{$hostname}/';</script>";
     } else {
         $_SESSION['msg'] = "F";
-        echo "<script>window.location = 'http://localhost/PROJECT/Chandigarh/index.php';</script>";
+        echo "<script>window.location = '{$hostname}/';</script>";
     }
 }

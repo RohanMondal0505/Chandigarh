@@ -1,5 +1,6 @@
 <?php
 session_start();
+$title = 'Home';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandigarh Trip : <?php echo $title = 'Home';?> </title>
+    <title>Chandigarh Trip : <?php echo $title; ?> </title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -29,9 +30,7 @@ session_start();
 
 
         <!-- Header Section Start -->
-        <?php 
-        $title = 'Home';
-        include "./pages/header.php" ?>
+        <?php include "./pages/header.php" ?>
         <!-- x Header Section End x -->
 
 
@@ -41,23 +40,15 @@ session_start();
             <div class="row-1">
                 <div class="headline">
                     <a href="#" class="1">Latest Info</a>
-                    <a class="2">Tourist Guide</a>
-                    <a href="https://www.google.com/maps/place/Chandigarh/@30.7896625,76.4429482,10z/data=!4m5!3m4!1s0x390fed0be66ec96b:0xa5ff67f9527319fe!8m2!3d30.7333148!4d76.7794179" target="_blank">Google Map</a>
-                    <a href="./about chnd.php" target="_blank">About Chandigarh</a>
+                    <a href="#" class="2">Tourist Guide</a>
+                    <a href="https://www.google.com/maps/place/Chandigarh/@30.7354003,76.7530122,13z/data=!4m5!3m4!1s0x390fed0be66ec96b:0xa5ff67f9527319fe!8m2!3d30.7333148!4d76.7794179" title="Click to See Map" target="_blank">Google Map</a>
+                    <a href="./about chnd.php" title="Click to See About Chandigarh">About Chandigarh</a>
                 </div>
 
                 <div class="box box-1">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
                 </div>
                 <div class="box box-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
-                </div>
-                <div class="box box-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
-                </div>
-                <div class="box box-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
                 </div>
@@ -160,7 +151,7 @@ session_start();
                                         }
                                         ?>
                                     })
-                                </script>;
+                                </script>
                             </div>
                         </form>
                     </div>
@@ -240,7 +231,7 @@ session_start();
                                         }
                                         ?>
                                     })
-                                </script>;
+                                </script>
                             </div>
                         </form>
                     </div>
@@ -319,7 +310,7 @@ session_start();
                                         }
                                         ?>
                                     })
-                                </script>;
+                                </script>
                             </div>
                         </form>
                     </div>
@@ -402,7 +393,7 @@ session_start();
                                         }
                                         ?>
                                     })
-                                </script>;
+                                </script>
                             </div>
                         </form>
                     </div>
@@ -485,7 +476,7 @@ session_start();
                                         }
                                         ?>
                                     })
-                                </script>;
+                                </script>
                             </div>
                         </form>
                     </div>
@@ -494,8 +485,22 @@ session_start();
                             <div class="details food-1"></div>
                             <div class="details food-2"></div>
                             <div class="details food-3"></div>
-                            <div class="details food-4" onclick="document.getElementById('food-form').submit();">
+
+                            <div class="details food-4" id="food-form-btn">
                                 <i class="fas fa-search"></i>
+                                <input type="hidden" name="transport" value="food">
+                                <script>
+                                    document.getElementById('food-form-btn').addEventListener('click', () => {
+                                        <?php
+                                        if (isset($_SESSION['use'])) {
+                                            echo "document.getElementById('food-form').submit();";
+                                        } else {
+                                            echo "document.querySelector('.log-background').style.opacity = 1;
+                                            document.querySelector('.log-background').style.visibility = 'visible';";
+                                        }
+                                        ?>
+                                    })
+                                </script>
                             </div>
                         </form>
                     </div>
@@ -547,16 +552,16 @@ session_start();
                                 while (($rowUserBlog = mysqli_fetch_assoc($resultUserBlog)) && $i != 6) {
                                     $i = $i + 1;
                             ?>
-                                    <a href="#" class="blog">
+                                    <a href="./blog.php?id=<?php echo $rowUserBlog['blog_id']; ?>" class="blog">
                                         <div class="blogImg">
                                             <img src="./blog images/<?php echo $rowUserBlog['blog_image']; ?>" alt="">
                                         </div>
                                         <div class="blogData">
                                             <h1>
-                                                <?php echo $rowUserBlog['blog_tittle']; ?>
+                                                <?php echo substr($rowUserBlog['blog_tittle'], 0, 28) . ".."; ?>
                                                 <span><?php echo $rowUserBlog['date']; ?></span>
                                             </h1>
-                                            <p><?php echo $rowUserBlog['blog_dec']; ?></p>
+                                            <p><?php echo substr($rowUserBlog['blog_dec'], 0, 130) . "..."; ?></p>
                                             <div>
                                                 <span><?php echo $rowUserBlog['user_name']; ?></span>
                                                 <img src="./profile images/<?php echo $rowUserBlog['user_image']; ?>" alt="Profile Picture">
@@ -571,7 +576,7 @@ session_start();
                             ?>
                         </div>
                         <span class="moreBtn">
-                            <a href="#">
+                            <a href="./allblogs.php?id=0">
                                 More <i class="fas fa-arrow-right"></i>
                             </a>
                         </span>
@@ -586,7 +591,7 @@ session_start();
                                 while (($rowUserBlog = mysqli_fetch_assoc($resultUserBlog)) && $i != 6) {
                                     $i = $i + 1;
                             ?>
-                                    <a href="#" class="blog">
+                                    <a href="./blog.php?id=<?php echo $rowUserBlog['blog_id']; ?>" class="blog">
                                         <div class="blogImg">
                                             <img src="./blog images/<?php echo $rowUserBlog['blog_image']; ?>" alt="">
                                         </div>
@@ -608,7 +613,7 @@ session_start();
                             ?>
                         </div>
                         <span class="moreBtn">
-                            <a href="#">
+                            <a href="./allblogs.php?id=<?php echo $_SESSION['user_id']; ?>">
                                 More <i class="fas fa-arrow-right"></i>
                             </a>
                         </span>
@@ -639,7 +644,7 @@ session_start();
         </main>
         <!-- x Main Section End x -->
 
-
+        
 
         <!-- Footer Section Start -->
         <?php include "./pages/footer.php"; ?>
