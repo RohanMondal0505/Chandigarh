@@ -39,18 +39,10 @@ $title = 'Home';
         <main>
             <div class="row-1">
                 <div class="headline">
-                    <a href="#" class="1">Latest Info</a>
-                    <a href="#" class="2">Tourist Guide</a>
+                    <a href="https://news.google.com/covid19/map?hl=en-IN&mid=%2Fm%2F01f1q8&gl=IN&ceid=IN%3Aen" target="_blank" class="1">COVID-19</a>
+                    <a href="./contact us.php" class="2">Contact Us</a>
                     <a href="https://www.google.com/maps/place/Chandigarh/@30.7354003,76.7530122,13z/data=!4m5!3m4!1s0x390fed0be66ec96b:0xa5ff67f9527319fe!8m2!3d30.7333148!4d76.7794179" title="Click to See Map" target="_blank">Google Map</a>
                     <a href="./about chnd.php" title="Click to See About Chandigarh">About Chandigarh</a>
-                </div>
-
-                <div class="box box-1">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
-                </div>
-                <div class="box box-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, debitis?
                 </div>
             </div>
 
